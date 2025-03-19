@@ -53,22 +53,22 @@ app.post("/books",async (req,res) => {
 app.put("/books/:id/auhtor", async (req,res) => {
     const {id} = req.params
     const {author} = req.body
-    try {
-        const res = await Books.findByIdAndUpdate({_id:id},{author:author})
-        return res.json(res)
+    // try {
+        const result = await Books.findByIdAndUpdate({_id:id},{author:author})
+        res.json(result)
         
-    } catch (error) {
-        return res.status(500).json({error})
+    // } catch (error) {
+    //     return res.status(500).json({error})
         
-    }
+    // }
     
 })
 app.delete("/books/:id", async (req,res) => {
     const {id} = req.params
   
     try {
-        const res = await Books.findByIdAndDelete(id)
-        return res.send("deleted successfully")
+        const result = await Books.findByIdAndDelete(id)
+        res.send("deleted successfully")
         
     } catch (error) {
         return res.status(500).json({error})
